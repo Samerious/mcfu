@@ -3,9 +3,12 @@
 require 'pg'
 
 begin
-
-    con = PG.connect :hostaddr => '192.168.1.254', :dbname => 'musiccabinet', :user => 'postgres',
-        :password => ''
+    print  "Please enter datbasae username:"
+    user = gets
+    print "Please entur user password"
+    password = gets
+    con = PG.connect :hostaddr => '192.168.1.254', :dbname => 'musiccabinet', :user => "#{username}",
+        :password => "#{password}"
 
     user = con.user
     db_name = con.db

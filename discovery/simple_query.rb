@@ -4,8 +4,8 @@ require 'pg'
 
 begin
 
-    con = PG.connect :hostaddr => '192.168.1.254', :dbname => 'musiccabinet', :user => 'postgres',
-        :password => ''
+  con = PG.connect :hostaddr => '192.168.1.254', :dbname => 'musiccabinet', :user => "#{username}",
+      :password => "#{password}"
 
 
             rs = con.exec 'SELECT * FROM library.directory;'
@@ -13,9 +13,9 @@ begin
             rs.each do |rowid|
               rowid2 = "%s" % [ rowid['id'] ]
               rowpath = "%s" % [ rowid['path'] ]
-              rowpath = rowpath.sub('D:', '/media/mikebullshit')
-              rowpath = rowpath.gsub('\\', '/')
-              rowpath = rowpath + '/'
+              rowpathlinux = rowpath.sub('D:', '/media/mikebullshit')
+              rowpathlinux = rowpathlinux.gsub('\\', '/')
+              rowpathlinux = rowpathlinux + '/'
               if Dir.exists?("#{rowpath}") == false
                 puts "#{rowid2}"
                 puts "#{rowpath}"
