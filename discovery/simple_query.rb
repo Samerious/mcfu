@@ -4,6 +4,10 @@ require 'pg'
 
 begin
 
+  print  "Please enter datbasae username:"
+  user = gets
+  print "Please entur user password"
+  password = get
   con = PG.connect :hostaddr => '192.168.1.254', :dbname => 'musiccabinet', :user => "#{username}",
       :password => "#{password}"
 
