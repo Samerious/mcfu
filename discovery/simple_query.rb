@@ -20,13 +20,13 @@ begin
               rowpathlinux = rowpath.sub('D:', '/media/mikebullshit')
               rowpathlinux = rowpathlinux.gsub('\\', '/')
               rowpathlinux = rowpathlinux + '/'
-              if Dir.exist?("#{rowpath}") != true then
-              rs = con.exec "select * from library.directory_import where parent_id = #{rowid2}"
-              rs = con.exec "select * from library.directory where parent_id = #{rowid2}"
-              rs = con.exec "select * from library.file where directory_id = #{rowid2}"
-              rs = con.exec "select * from library.file_import where directory_id = #{rowid2}"
-              rs = con.exec "select * from library.directory where id = #{rowid2}"
-              puts "#{rowid}"
+              if Dir.exist?("#{rowpathlinux}") != true then
+              con.exec "delete from library.directory_import where parent_id = #{rowid2}"
+              con.exec "delete from library.fileheader where file_id=(select file_id from library.file where id = #{rowid2})"
+              con.exec "delete from library.file where directory_id = #{rowid2}"
+              con.exec "delete from library.file_import where directory_id = #{rowid2}"
+              con.exec "delete from library.directory where id = #{rowid2}"
+              puts "#{rowid2}"
               #puts "#{rowpathlinux}"
               end
             end
