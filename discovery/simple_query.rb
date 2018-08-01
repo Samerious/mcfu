@@ -4,7 +4,7 @@ require 'pg'
 
 begin
 
-  print  "Please enter datbasae username: "
+  print  "Please enter database username: "
   user = gets.chomp
   print "Please entur user password: "
   password = gets.chomp
