@@ -4,19 +4,18 @@ require 'pg'
 
 begin
     print  "Please enter datbasae username:"
-    user = gets
-    print "Please entur user password"
-    password = gets
-    con = PG.connect :hostaddr => '192.168.1.254', :dbname => 'musiccabinet', :user => "#{username}",
+    user = gets.chomp
+    print "Please enter user password"
+    password = gets.chomp
+    con = PG.connect :hostaddr => '192.168.1.254', :dbname => 'musiccabinet', :user => "#{user}",
         :password => "#{password}"
 
+    rs = con.exec 'SHOW server_version'
+    puts "#{rs}"
     user = con.user
     db_name = con.db
     pswd = con.pass
 
-    puts "User: #{user}"
-    puts "Database name: #{db_name}"
-    puts "Password: #{pswd}"
 
 rescue PG::Error => e
 

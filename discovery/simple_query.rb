@@ -20,9 +20,9 @@ begin
               rowpathlinux = rowpath.sub('D:', '/media/mikebullshit')
               rowpathlinux = rowpathlinux.gsub('\\', '/')
               rowpathlinux = rowpathlinux + '/'
-              if Dir.exists?("#{rowpath}") == false
-                puts "#{rowid2}"
-                puts "#{rowpath}"
+              if Dir.exist?("#{rowpathlinux}") != true then
+              puts "#{rowid2}"
+              puts "#{rowpathlinux}"
               end
             end
 
